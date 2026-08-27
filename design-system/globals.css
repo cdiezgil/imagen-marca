@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* MODO CLARO */
+    --background: #FFFFFF;
+    --foreground: #0A1122; /* Dark Navy para texto */
+    
+    --primary: #FFD700;
+    --primary-foreground: #0A1122; /* Texto sobre botones Oro siempre Dark Navy */
+    
+    /* Texturas - MODO CLARO */
+    /* Dot grid sutil en gris técnico */
+    --texture-dots: radial-gradient(#CCCCCC 1px, transparent 1px);
+    /* Líneas diagonales sutiles para loaders */
+    --texture-diagonal: repeating-linear-gradient(
+      45deg,
+      #E5E5E5,
+      #E5E5E5 2px,
+      transparent 2px,
+      transparent 8px
+    );
+    --texture-metal: linear-gradient(135deg, #E5E5E5 0%, #CCCCCC 100%);
+  }
+
+  .dark {
+    /* MODO OSCURO (Default técnico para Onzia / GalopApp) */
+    --background: #0A1122;
+    --foreground: #FFFFFF;
+    
+    --primary: #FFD700;
+    --primary-foreground: #0A1122; /* Texto sobre Oro sigue siendo Navy por accesibilidad */
+    
+    /* Texturas - MODO OSCURO */
+    /* Dot grid inverso */
+    --texture-dots: radial-gradient(#1A2235 1px, transparent 1px);
+    --texture-diagonal: repeating-linear-gradient(
+      45deg,
+      #1A2235,
+      #1A2235 2px,
+      transparent 2px,
+      transparent 8px
+    );
+    /* Metal cepillado oscuro premium */
+    --texture-metal: linear-gradient(135deg, #1A2235 0%, #0A1122 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-[#E5E5E5] dark:border-[#1A2235];
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Clases de utilidad para aplicar las texturas rápidamente */
+  .bg-dots {
+    background-image: var(--texture-dots);
+    background-size: 16px 16px; /* Ajustado al grid de 8pt (16x16) */
+  }
+  
+  .bg-diagonal {
+    background-image: var(--texture-diagonal);
+    background-size: 11px 11px;
+  }
+  
+  .bg-metal {
+    background-image: var(--texture-metal);
+  }
+}
